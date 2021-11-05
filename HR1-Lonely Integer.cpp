@@ -1,3 +1,4 @@
+// see python answer to know shortcut: (2^32-1)-n
 #include <bits/stdc++.h>
 
 using namespace std;
