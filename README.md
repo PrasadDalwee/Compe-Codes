@@ -1,9 +1,9 @@
 # Compe-Codes
 
-How to search a particular problem:
-1.platform: cf-codeforces HR-Hackerrank,etc.
-2.problem name: xyz
-3.language: .cpp- C++, .py-Python 3
+How to search a particular problem:\
+1.platform: cf-codeforces HR-Hackerrank,etc.\
+2.problem name: xyz\
+3.language: .cpp- C++, .py-Python 3\
 eg: HR1-Lonely Integer.cpp
 
 How to get link of the problem:
