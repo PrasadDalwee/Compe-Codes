@@ -17,6 +17,7 @@ import sys
 
 def caesarCipher(s, k):
     # Write your code here
+    k=k%26
     s1=''
     for i in s:
         x=ord(i)
@@ -25,14 +26,14 @@ def caesarCipher(s, k):
         
         if x>=a and x<=a+25:
             if x+k>a+25:
-                x=a+(x+k-a-26)
+                x=x+k-26
             else:
                 x+=k
             s1+=chr(x)
             
         elif x>=A and x<=A+25:
             if x+k>A+25:
-                x=A+(x+k-A-26)
+                x=(x+k-26)
             else:
                 x+=k
             s1+=chr(x)
