@@ -60,6 +60,46 @@ void free_doubly_linked_list(DoublyLinkedListNode* node) {
     }
 }
 
+/*
+ * Complete the 'reverse' function below.
+ *
+ * The function is expected to return an INTEGER_DOUBLY_LINKED_LIST.
+ * The function accepts INTEGER_DOUBLY_LINKED_LIST llist as parameter.
+ */
+
+/*
+ * For your reference:
+ *
+ * DoublyLinkedListNode {
+ *     int data;
+ *     DoublyLinkedListNode* next;
+ *     DoublyLinkedListNode* prev;
+ * };
+ *
+ */
+
+DoublyLinkedListNode* reverse(DoublyLinkedListNode* llist) 
+{
+    if(!llist)
+        return llist;
+    
+    DoublyLinkedListNode* curr=llist;
+    DoublyLinkedListNode* prevn=NULL;
+    DoublyLinkedListNode* temp;
+    
+    while(curr!=NULL)
+    {
+        temp=curr->prev;
+        curr->prev=curr->next;
+        curr->next=temp;
+        
+        prevn=curr;
+        curr=curr->prev;
+    }
+    
+    return prevn;
+    
+}
 
 int main()
 {
