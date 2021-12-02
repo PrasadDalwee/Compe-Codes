@@ -1,3 +1,5 @@
+                            //O(n) solution
+
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -12,44 +14,32 @@ vector<string> split(const string &);
  * The function is expected to return an INTEGER_ARRAY.
  * The function accepts following parameters:
  *  1. INTEGER m
+ 
  *  2. INTEGER_ARRAY arr
  */
 
 vector<int> icecreamParlor(int m, vector<int> arr) 
 {
-    int sum,i=0,j=arr.size()-1;
-    vector <int> ans,dup=arr;
-    sort(arr.begin(),arr.end());
-    while(i<j)
+    vector <int> diff(1e4,-1), ans(2);
+    int last;
+    for(int i=0;i<arr.size();i++)       //create diff array
     {
-        cout<<i<<" "<<j<<" "<<sum<<endl;
-        sum=arr[i]+arr[j];
-        if(sum==m)
-            break;
-        
-        else if(sum>m)
-            j--;
-            
-        else if (sum<m)
-            i++;
+        if(m>arr[i])
+            {
+                diff[m-arr[i]]=i;
+                last=m-arr[i];      //greatest diff
+            }
     }
-    int p=arr[i],q=arr[j],c=0;
-    for(int x=0;x<dup.size();x++)
+    
+    for(int j=0;j<arr.size();j++)       //check if diff exists 
     {
-        if(dup[x]==p)
+        int d=diff[arr[j]];
+        if(d!=-1 && d!=j)  // diff i.e. exactly half of m will output same index twice
         {
-            c++;
-            ans.push_back(x+1);
+            ans[0]=min(d+1,j+1);  //+1 because counting from 1
+            ans[1]=max(d+1,j+1);
+            return ans;
         }
-        
-        else if(dup[x]==q)
-        {
-            c++;
-            ans.push_back(x+1);
-        }
-        
-        if(c==2)
-            break;
     }
     return ans;
 }
