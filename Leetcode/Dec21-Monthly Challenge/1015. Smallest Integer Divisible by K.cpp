@@ -1,3 +1,6 @@
+//  link:https://leetcode.com/problems/smallest-integer-divisible-by-k/
+//  Topic: maths-remainders 
+
 #include<bits/stdc++.h>
 using namespace std;
 
