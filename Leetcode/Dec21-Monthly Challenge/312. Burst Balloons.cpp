@@ -15,7 +15,7 @@ class Solution
             nums.insert(nums.begin(),1);
             nums.insert(nums.end(),1);
 
-            int val[size+2][size+2]={0};
+            int val[size+2][size+2];
 
             for(int i=1; i<=size; i++)
                 val[i][i]=nums[i-1]*nums[i]*nums[i+1];
