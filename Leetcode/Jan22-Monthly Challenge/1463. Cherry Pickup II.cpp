@@ -1,5 +1,5 @@
-//  link:https://leetcode.com/problems/car-pooling/
-//  Topic: Arrays
+//  link:https://leetcode.com/problems/cherry-pickup-ii/solution/
+//  Topic: Dynamic Programming
 
 #include<bits/stdc++.h>
 using namespace std;
