@@ -35,3 +35,4 @@ public:
     }
 };
 
+//same solution can be achieved by while
