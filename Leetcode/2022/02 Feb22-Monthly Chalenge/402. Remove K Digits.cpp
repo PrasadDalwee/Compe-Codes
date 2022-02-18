@@ -1,5 +1,5 @@
-//  link:
-//  Topic: 
+//  link:https://leetcode.com/problems/remove-k-digits/submissions/
+//  Topic: Stack, String
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -7,40 +7,28 @@ using namespace std;
 
 class Solution 
 {
-    public:
-        
+    public:  
         string removeKdigits(string num, int k) 
         {
-            string ans;
+            string ans; //string stack
+            
             for(auto &x: num)
             {
                 int top=ans.size()-1;
-
-                cout<<" num: "<<num<<" ans: "<<ans<<"  x: "<<x<<endl;
-
-                if(top>-1 && x<ans[top] && k>0)
-                {
-                    while(top>-1 && x<ans[top] && k>0)
-                    {
-                        cout<<"\t ans[top]: "<<ans[top]<<" x:"<<x<<endl;
-                        ans.pop_back();
-                        top--;
-                        k--;
-                    }
-                }
-
-                else
-                    ans.push_back(x);
+                while(top>-1 && x<ans[top] && k>0)  //pop the top of stack if x<top
+                { ans.pop_back();   top--;  k--; }
+                
+                ans.push_back(x);
             }
-            return ans;
+            
+            while(k>0)  //pop top if k>0
+            { ans.pop_back(); k--; }
+            
+            int i;
+            for(i=0;i<ans.size();i++)//remove leading zeroes
+                if(ans[i]!='0') break;
+            ans= ans.substr(i); 
+            
+            return ans=="" ? "0": ans;  //empty string=> 0
         }
 };
-
-int main()
-{
-    int k=2;
-    string num="1020304";
-    //cin>>num>>k;
-    Solution S;
-    cout<<S.removeKdigits(num,k);
-}
