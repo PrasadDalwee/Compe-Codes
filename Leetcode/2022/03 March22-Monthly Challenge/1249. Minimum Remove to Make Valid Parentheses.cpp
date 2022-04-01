@@ -1,42 +1,37 @@
-//  link:
-//  Topic: 
+//  link:https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/
+//  Topic: String, prefix-suffix counters
 
 #include<bits/stdc++.h>
 using namespace std;
 
 
-// //Definition for a binary tree node.
-// struct TreeNode
-// {
-//     int val;
-//     TreeNode *left;
-//     TreeNode *right;
-//     TreeNode() : val(0), left(nullptr), right(nullptr) {}
-//     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-//     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-// };
-
-//  // Definition for singly-linked list.
-//  struct ListNode 
-//  {
-//       int val;
-//       ListNode *next;
-//       ListNode() : val(0), next(nullptr) {}
-//       ListNode(int x) : val(x), next(nullptr) {}
-//       ListNode(int x, ListNode *next) : val(x), next(next) {}
-//   };
-
-
-class Solution 
-{
-    public:
-        void Func()
+class Solution {
+public:
+    string minRemoveToMakeValid(string ans) 
+    {
+        int size=ans.size(), open=0, close=0;
+        for(int i=0; i<size; i++)
         {
-
+            if(ans[i] =='(')
+                open++;
+            else if(ans[i] ==')')
+            {
+                open>0? open--: ans[i]='#';
+            }
         }
+        
+        for(int i=size-1; i>-1; i--)
+        {
+            if(ans[i] ==')')
+                close++;
+            else if(ans[i] =='(')
+            {
+                close>0? close--: ans[i]='#';
+            }
+        }
+        
+        ans.erase(remove(ans.begin(), ans.end(), '#'), ans.end());
+        
+        return ans;
+    }
 };
-
-int main()
-{
-    
-}

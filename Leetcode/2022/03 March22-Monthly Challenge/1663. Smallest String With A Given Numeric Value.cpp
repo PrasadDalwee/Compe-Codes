@@ -1,42 +1,34 @@
-//  link:
-//  Topic: 
+//  link:https://leetcode.com/problems/smallest-string-with-a-given-numeric-value/
+//  Topic: String, Greedy
 
 #include<bits/stdc++.h>
 using namespace std;
 
-
-// //Definition for a binary tree node.
-// struct TreeNode
-// {
-//     int val;
-//     TreeNode *left;
-//     TreeNode *right;
-//     TreeNode() : val(0), left(nullptr), right(nullptr) {}
-//     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-//     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-// };
-
-//  // Definition for singly-linked list.
-//  struct ListNode 
-//  {
-//       int val;
-//       ListNode *next;
-//       ListNode() : val(0), next(nullptr) {}
-//       ListNode(int x) : val(x), next(nullptr) {}
-//       ListNode(int x, ListNode *next) : val(x), next(next) {}
-//   };
-
-
-class Solution 
-{
-    public:
-        void Func()
+class Solution {
+public:
+    string getSmallestString(int n, int k) 
+    {
+        string ans(n,'a');
+        int sum=n;
+        
+        for(int i=n-1; i>-1; i--)
         {
-
+            if(sum==k)
+                return ans;
+            
+            else if(k-sum<25)
+            {
+                ans[i]=ans[i]+k-sum; 
+                return ans;
+            }   
+            
+            else
+            {
+                ans[i]='z';
+                sum+=25;
+            }
+            
         }
+        return ans;
+    }
 };
-
-int main()
-{
-    
-}

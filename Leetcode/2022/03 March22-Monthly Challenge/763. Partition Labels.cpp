@@ -1,42 +1,34 @@
-//  link:
-//  Topic: 
+//  link:https://leetcode.com/problems/partition-labels/
+//  Topic: Map, 2-pointers
 
 #include<bits/stdc++.h>
 using namespace std;
 
 
-// //Definition for a binary tree node.
-// struct TreeNode
-// {
-//     int val;
-//     TreeNode *left;
-//     TreeNode *right;
-//     TreeNode() : val(0), left(nullptr), right(nullptr) {}
-//     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-//     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-// };
-
-//  // Definition for singly-linked list.
-//  struct ListNode 
-//  {
-//       int val;
-//       ListNode *next;
-//       ListNode() : val(0), next(nullptr) {}
-//       ListNode(int x) : val(x), next(nullptr) {}
-//       ListNode(int x, ListNode *next) : val(x), next(next) {}
-//   };
-
-
-class Solution 
-{
-    public:
-        void Func()
+class Solution {
+public:
+    vector<int> partitionLabels(string s) 
+    {
+        unordered_map <char, int> m;
+        
+        for(int i=0; i<s.size(); i++)
+            m[s[i]]=i;
+        
+        
+        vector <int> ans;
+        int start=0, end=0, size=s.size();
+        
+        for(int i=0; i<size; i++)
         {
-
+            end=max(end,m[s[i]]);
+            
+            if(i==end || i==size-1)
+            {
+                ans.push_back(end-start+1);
+                start=end=end+1;
+            }
         }
+        
+        return ans;
+    }
 };
-
-int main()
-{
-    
-}

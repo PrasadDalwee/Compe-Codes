@@ -1,42 +1,27 @@
-//  link:
-//  Topic: 
+//  link:https://leetcode.com/problems/two-city-scheduling/
+//  Topic: Greedy, Array, Sorting
 
 #include<bits/stdc++.h>
 using namespace std;
 
-
-// //Definition for a binary tree node.
-// struct TreeNode
-// {
-//     int val;
-//     TreeNode *left;
-//     TreeNode *right;
-//     TreeNode() : val(0), left(nullptr), right(nullptr) {}
-//     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-//     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-// };
-
-//  // Definition for singly-linked list.
-//  struct ListNode 
-//  {
-//       int val;
-//       ListNode *next;
-//       ListNode() : val(0), next(nullptr) {}
-//       ListNode(int x) : val(x), next(nullptr) {}
-//       ListNode(int x, ListNode *next) : val(x), next(next) {}
-//   };
-
-
-class Solution 
-{
-    public:
-        void Func()
+class Solution {
+public:
+    int twoCitySchedCost(vector<vector<int>>& costs) 
+    {
+        int a=0,b=0,sum=0;
+        vector <int> diff;
+        
+        for(auto &x: costs)
         {
-
+            sum+=x[0];
+            diff.push_back(x[1]-x[0]);
         }
+        
+        sort(diff.begin(), diff.end());
+        
+        for(int i=0; i<diff.size()/2; i++)
+            sum+=diff[i];
+        
+        return sum;
+    }
 };
-
-int main()
-{
-    
-}
