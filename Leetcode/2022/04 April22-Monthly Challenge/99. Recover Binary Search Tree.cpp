@@ -1,5 +1,5 @@
-//  link: https://leetcode.com/problems/kth-smallest-element-in-a-bst/
-//  Topic: Inorder traversal, BST
+//  link: https://leetcode.com/problems/recover-binary-search-tree/
+//  Topic: Inorder Traversal, BST
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -28,19 +28,30 @@ struct TreeNode
 
 class Solution {
 public:
-    int ans;
-    int kthSmallest(TreeNode* root, int &k) 
+    TreeNode* big=NULL, *small=NULL, *prev =new TreeNode(INT_MIN);
+    void recoverTree(TreeNode* root) 
     {
-        if(root->left && k>0)
-            kthSmallest(root->left,k);
+        inorder(root);
+        swap(big->val,small->val);
+    }
+    
+    void inorder(TreeNode* root)
+    {
+        if(root->left)
+            inorder(root->left);
         
-        k--;
-        if(k==0)
-        {    ans=root->val; return ans;}
+        if(big==NULL && root->val<prev->val) //first defect ->big
+        {
+           big=prev;
+           small=root;
+        }
         
-        if(root->right && k>0)
-            kthSmallest(root->right,k);
+        else if(root->val<prev->val)    //latest defect ->small
+            small=root;
         
-        return ans;
+        prev=root;
+        
+        if(root->right)
+            inorder(root->right);
     }
 };
