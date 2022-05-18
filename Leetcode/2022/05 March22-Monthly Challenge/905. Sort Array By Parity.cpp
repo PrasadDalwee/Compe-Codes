@@ -1,42 +1,25 @@
-//  link:
-//  Topic: 
+//  link:https://leetcode.com/problems/sort-array-by-parity/
+//  Topic: Two-Pointers
 
 #include<bits/stdc++.h>
 using namespace std;
 
 
-// //Definition for a binary tree node.
-// struct TreeNode
-// {
-//     int val;
-//     TreeNode *left;
-//     TreeNode *right;
-//     TreeNode() : val(0), left(nullptr), right(nullptr) {}
-//     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-//     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-// };
-
-//  // Definition for singly-linked list.
-//  struct ListNode 
-//  {
-//       int val;
-//       ListNode *next;
-//       ListNode() : val(0), next(nullptr) {}
-//       ListNode(int x) : val(x), next(nullptr) {}
-//       ListNode(int x, ListNode *next) : val(x), next(next) {}
-//   };
-
-
-class Solution 
-{
-    public:
-        void Func()
+class Solution {
+public:
+    vector<int> sortArrayByParity(vector<int>& nums) 
+    {
+        int odd=0, eve=nums.size()-1;
+        while(odd<eve)
         {
-
+            if(nums[odd]%2==1 && nums[eve]%2==0)
+                swap(nums[odd],nums[eve]);
+            if(nums[odd]%2!=1)
+                odd++;
+            if(nums[eve]%2!=0)
+                eve--;
         }
+        
+        return nums;
+    }
 };
-
-int main()
-{
-    
-}
